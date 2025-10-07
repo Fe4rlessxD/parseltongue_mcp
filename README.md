@@ -1,26 +1,31 @@
 # Parseltongue MCP Server 🐍
 
-A Model Context Protocol (MCP) server providing 30+ text encoding, cipher, and transformation tools inspired by [P4RS3LT0NGV3](https://github.com/elder-plinius/P4RS3LT0NGV3).
+A Model Context Protocol (MCP) server providing 40+ text encoding, cipher, and transformation tools inspired by [P4RS3LT0NGV3](https://github.com/elder-plinius/P4RS3LT0NGV3).
 
 ## Features
 
-### 📦 Basic Encodings (12 tools)
+### 📦 Basic Encodings (22 tools)
 
 - **Base64**: Encode/decode Base64
+- **Base64URL**: Encode/decode Base64 URL-safe format
 - **Base32**: Encode/decode Base32
+- **Base58**: Encode/decode Base58 (Bitcoin-style)
+- **Base62**: Encode/decode Base62
+- **Base45**: Encode/decode Base45
+- **ASCII85**: Encode/decode ASCII85
 - **Hexadecimal**: Encode/decode hex
 - **Binary**: Encode/decode 8-bit binary
 - **URL Encoding**: Percent encoding for URLs
 - **HTML Entities**: Encode/decode HTML entities
 
-### 🔐 Ciphers (6 tools)
+### 🔐 Ciphers (8 tools)
 
-- **ROT13**: Classic rotation cipher
+- **ROT13**: Classic rotation cipher (encode/decode)
 - **Caesar Cipher**: Custom shift cipher (encode/decode)
-- **Atbash**: Reverse alphabet substitution
+- **Atbash**: Reverse alphabet substitution (encode/decode)
 - **Morse Code**: Encode/decode to Morse code
 
-### 🎨 Unicode Transformations (7 tools)
+### 🎨 Unicode Transformations (6 tools)
 
 - **Zalgo Text**: Glitch effect with combining marks
 - **Upside Down**: Flip text using Unicode
@@ -31,7 +36,7 @@ A Model Context Protocol (MCP) server providing 30+ text encoding, cipher, and t
 
 ### 🕵️ Steganography (3 tools)
 
-- **Zero-Width Encoding**: Hide text using invisible Unicode characters
+- **Zero-Width Encoding**: Hide text using invisible Unicode characters (encode/decode)
 - **Invisible Ink**: Hide messages within cover text
 
 ### 🔧 Utilities (2 tools)
@@ -94,6 +99,26 @@ python main.py
 encode_base64(text="Hello World")
 # Returns: "SGVsbG8gV29ybGQ="
 
+# Base64URL (URL-safe)
+encode_base64url(text="Hello World")
+# Returns: "SGVsbG8gV29ybGQ="
+
+# Base58 (Bitcoin-style)
+encode_base58(text="Hello")
+# Returns: "9Ajdvzr"
+
+# Base62
+encode_base62(text="Hello")
+# Returns: "5TP3P3v"
+
+# Base45
+encode_base45(text="Hello")
+# Returns: "JBSWY3DP"
+
+# ASCII85
+encode_ascii85(text="Hello")
+# Returns: "87cURD]i"
+
 # Morse Code
 encode_morse(text="SOS")
 # Returns: "... --- ..."
@@ -101,6 +126,10 @@ encode_morse(text="SOS")
 # Binary
 encode_binary(text="Hi")
 # Returns: "01001000 01101001"
+
+# Hexadecimal
+encode_hex(text="Hi")
+# Returns: "4869"
 
 # Zero-Width (Steganography)
 encode_zero_width(text="secret")
@@ -141,19 +170,27 @@ encode_bubble_text(text="Hello")
 # Full Width
 encode_fullwidth(text="Wave")
 # Returns: "Ｗａｖｅ"
+
+# Strikethrough
+encode_strikethrough(text="Cancelled")
+# Returns: "C̶a̶n̶c̶e̶l̶l̶e̶d̶"
+
+# Underline
+encode_underline(text="Important")
+# Returns: "I̲m̲p̲o̲r̲t̲a̲n̲t̲"
 ```
 
 ## Tool Categories
 
 All tools are exposed as MCP tools with detailed descriptions and type hints:
 
-| Category                | Count | Examples                               |
-| ----------------------- | ----- | -------------------------------------- |
-| Basic Encodings         | 12    | Base64, Hex, Binary, URL               |
-| Ciphers                 | 6     | ROT13, Caesar, Atbash, Morse           |
-| Unicode Transformations | 7     | Zalgo, Upside Down, Bubble, Full Width |
-| Steganography           | 3     | Zero-Width, Invisible Ink              |
-| Utilities               | 2     | Reverse, Pig Latin                     |
+| Category                | Count | Examples                                                         |
+| ----------------------- | ----- | ---------------------------------------------------------------- |
+| Basic Encodings         | 22    | Base64, Base58, Base62, Base45, ASCII85, Hex, Binary, URL        |
+| Ciphers                 | 8     | ROT13, Caesar, Atbash, Morse                                     |
+| Unicode Transformations | 6     | Zalgo, Upside Down, Bubble, Full Width, Strikethrough, Underline |
+| Steganography           | 3     | Zero-Width, Invisible Ink                                        |
+| Utilities               | 2     | Reverse, Pig Latin                                               |
 
 ## Development
 
@@ -219,6 +256,8 @@ bubble = encode_bubble_text(text=normal)      # ⒶⓌⒺⓈⓄⓂⒺ
 wide = encode_fullwidth(text=normal)          # ＡＷＥＳＯＭＥ
 zalgo = encode_zalgo(text=normal)             # A̴W̸E̵S̶O̴M̵E̸
 strike = encode_strikethrough(text=normal)    # A̶W̶E̶S̶O̶M̶E̶
+underline = encode_underline(text=normal)     # A̲W̲E̲S̲O̲M̲E̲
+upside = encode_upside_down(text=normal)      # ƎWOSƎפ∀
 ```
 
 ### Classic Ciphers
