@@ -1,0 +1,16 @@
+[project]
+name = "parseltongue-mcp"
+version = "0.1.0"
+description = "MCP server for text encoding and transformation tools"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "base45>=0.4.4",
+    "base58>=2.1.1",
+    "pybase62>=1.0.0",
+    "httpx>=0.28.1",
+    "mcp[cli]>=1.16.0",
+]
+
+[project.scripts]
+parseltongue-mcp = "main:mcp.run"
